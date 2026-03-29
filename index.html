@@ -93,14 +93,6 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-  }
-  .nav-logo span { color: var(--text-dim); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--text-dim);
@@ -109,7 +101,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s;
-    position: relative;
   }
   .nav-links a::after {
     content: '';
@@ -453,7 +444,6 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <div class="nav-logo">ST<span>.dev</span></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
