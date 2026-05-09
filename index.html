@@ -31,7 +31,6 @@
     cursor: none;
   }
 
-  /* Custom cursor */
   .cursor {
     width: 12px; height: 12px;
     background: var(--accent);
@@ -56,7 +55,6 @@
     transition: transform 0.18s ease, width 0.3s, height 0.3s;
   }
 
-  /* Noise texture overlay */
   body::before {
     content: '';
     position: fixed;
@@ -67,7 +65,6 @@
     opacity: 0.5;
   }
 
-  /* Grid background */
   body::after {
     content: '';
     position: fixed;
@@ -80,7 +77,6 @@
     z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -101,6 +97,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s;
+    position: relative;
   }
   .nav-links a::after {
     content: '';
@@ -113,7 +110,6 @@
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
 
-  /* HERO */
   #hero {
     position: relative;
     min-height: 100vh;
@@ -147,7 +143,7 @@
     margin-top: 1.8rem;
     font-size: 0.85rem;
     color: var(--text-dim);
-    max-width: 480px;
+    max-width: 520px;
     line-height: 1.8;
     animation: fadeUp 0.6s 0.2s ease both;
   }
@@ -193,7 +189,6 @@
     transform: translateY(-2px);
   }
 
-  /* Glowing orb */
   .hero-orb {
     position: absolute;
     right: 5%;
@@ -215,7 +210,6 @@
     animation: pulse 4s 2s ease-in-out infinite;
   }
 
-  /* SECTIONS */
   section {
     position: relative;
     z-index: 2;
@@ -246,7 +240,6 @@
     z-index: 2;
   }
 
-  /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -259,7 +252,6 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s;
-    animation: fadeUp 0.5s ease both;
   }
   .skill-card:hover {
     border-color: var(--accent);
@@ -275,24 +267,43 @@
     transition: opacity 0.3s;
   }
   .skill-card:hover::before { opacity: 1; }
-  .skill-icon {
-    font-size: 1.6rem;
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-  .skill-name {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-  .skill-type {
-    font-size: 0.62rem;
-    color: var(--text-dim);
-    margin-top: 0.2rem;
-    letter-spacing: 0.05em;
-  }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+  .skill-name { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; }
+  .skill-type { font-size: 0.62rem; color: var(--text-dim); margin-top: 0.2rem; letter-spacing: 0.05em; }
 
-  /* PROJECTS */
+  /* CERTIFICATIONS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+  }
+  .cert-card:hover { border-color: var(--accent); transform: translateX(4px); box-shadow: var(--glow); }
+  .cert-card:hover::after { transform: scaleY(1); }
+  .cert-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .cert-name { font-size: 0.8rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.3rem; }
+  .cert-issuer { font-size: 0.65rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -305,7 +316,6 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s;
-    animation: fadeUp 0.5s ease both;
   }
   .project-card:hover {
     border-color: var(--accent2);
@@ -323,30 +333,10 @@
     transition: transform 0.4s;
   }
   .project-card:hover::after { transform: scaleX(1); }
-  .project-num {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
-  }
-  .project-desc {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .project-num { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 1rem; }
+  .project-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.8rem; line-height: 1.3; }
+  .project-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag {
     font-size: 0.62rem;
     letter-spacing: 0.1em;
@@ -362,7 +352,6 @@
     color: var(--accent2);
   }
 
-  /* CONTACT */
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -385,23 +374,10 @@
     box-shadow: var(--glow);
     color: var(--accent);
   }
-  .contact-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-  .contact-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 0.2rem;
-  }
-  .contact-value {
-    font-size: 0.78rem;
-    word-break: break-all;
-  }
+  .contact-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
+  .contact-value { font-size: 0.78rem; word-break: break-all; }
 
-  /* FOOTER */
   footer {
     position: relative;
     z-index: 2;
@@ -414,7 +390,6 @@
   }
   footer span { color: var(--accent); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -424,7 +399,6 @@
     50%       { transform: translateY(-50%) scale(1.1); opacity: 1; }
   }
 
-  /* SCROLL REVEAL */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -435,6 +409,7 @@
     .hero-orb { display: none; }
     .projects-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -448,21 +423,22 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section id="hero" style="padding-top:8rem; max-width:100%;">
+<section id="about" style="padding-top:8rem; max-width:100%;">
   <div class="hero-orb"></div>
   <div class="hero-inner">
-    <div class="hero-tag">// Data Science & ML Engineer</div>
+    <div class="hero-tag">// AI & Data Science Engineer</div>
     <h1 class="hero-name">
       Sagar<br>
       <span class="line2">Tripathi</span>
     </h1>
     <p class="hero-sub">
-      Building intelligent systems at the intersection of data, automation, and machine learning. Python-first, results-driven.
+      Computer Science undergraduate (AI & Data Science) with hands-on experience in Python and workflow automation. Actively exploring AI, Data Science, Machine Learning and modern tools to build efficient, intelligent solutions.
     </p>
     <div class="hero-actions">
       <a href="#projects" class="btn btn-primary">View Projects →</a>
@@ -480,48 +456,48 @@
   <div class="skills-grid">
     <div class="skill-card reveal" style="animation-delay:0.05s">
       <span class="skill-icon">🐍</span>
-      <div class="skill-name">Python</div>
+      <div class="skill-name">Python (DSA)</div>
       <div class="skill-type">Core Language</div>
     </div>
     <div class="skill-card reveal" style="animation-delay:0.1s">
-      <span class="skill-icon">🌿</span>
-      <div class="skill-name">Django</div>
-      <div class="skill-type">Web Framework</div>
+      <span class="skill-icon">🧪</span>
+      <div class="skill-name">Flask / FastAPI</div>
+      <div class="skill-type">Web Frameworks</div>
     </div>
     <div class="skill-card reveal" style="animation-delay:0.15s">
-      <span class="skill-icon">⚡</span>
-      <div class="skill-name">FastAPI</div>
-      <div class="skill-type">API Framework</div>
+      <span class="skill-icon">🌐</span>
+      <div class="skill-name">HTML / CSS / JS</div>
+      <div class="skill-type">Frontend</div>
     </div>
     <div class="skill-card reveal" style="animation-delay:0.2s">
-      <span class="skill-icon">🧪</span>
-      <div class="skill-name">Flask</div>
-      <div class="skill-type">Micro Framework</div>
-    </div>
-    <div class="skill-card reveal" style="animation-delay:0.25s">
-      <span class="skill-icon">🗄️</span>
-      <div class="skill-name">MySQL</div>
-      <div class="skill-type">Database</div>
-    </div>
-    <div class="skill-card reveal" style="animation-delay:0.3s">
-      <span class="skill-icon">🤖</span>
-      <div class="skill-name">Machine Learning</div>
-      <div class="skill-type">AI / Modeling</div>
-    </div>
-    <div class="skill-card reveal" style="animation-delay:0.35s">
-      <span class="skill-icon">🔗</span>
-      <div class="skill-name">LangChain</div>
-      <div class="skill-type">LLM Orchestration</div>
-    </div>
-    <div class="skill-card reveal" style="animation-delay:0.4s">
       <span class="skill-icon">📊</span>
       <div class="skill-name">Pandas / NumPy</div>
       <div class="skill-type">Data Analysis</div>
     </div>
+    <div class="skill-card reveal" style="animation-delay:0.25s">
+      <span class="skill-icon">🧹</span>
+      <div class="skill-name">Data Cleaning</div>
+      <div class="skill-type">Statistical Analysis</div>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.3s">
+      <span class="skill-icon">🗄️</span>
+      <div class="skill-name">SQL / MongoDB</div>
+      <div class="skill-type">Databases</div>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.35s">
+      <span class="skill-icon">🐳</span>
+      <div class="skill-name">Docker / Git</div>
+      <div class="skill-type">DevOps & Tools</div>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.4s">
+      <span class="skill-icon">☁️</span>
+      <div class="skill-name">Google Cloud</div>
+      <div class="skill-type">Generative AI / ML</div>
+    </div>
     <div class="skill-card reveal" style="animation-delay:0.45s">
-      <span class="skill-icon">🌐</span>
-      <div class="skill-name">Web Scraping</div>
-      <div class="skill-type">Automation</div>
+      <span class="skill-icon">📈</span>
+      <div class="skill-name">Power BI</div>
+      <div class="skill-type">Data Visualization</div>
     </div>
   </div>
 </section>
@@ -535,43 +511,56 @@
   <div class="projects-grid">
 
     <div class="project-card reveal">
-      <div class="project-num">01 / AI AGENT</div>
-      <h3 class="project-title">AI Data Science Agent</h3>
+      <div class="project-num">01 / OCR · NLP</div>
+      <h3 class="project-title">AI Doc Extractor</h3>
       <p class="project-desc">
-        An intelligent autonomous agent that assists with end-to-end data science workflows — from data ingestion and EDA to model training and evaluation, powered by LLMs.
+        Automated document processing system using Tesseract OCR to extract structured text from images and PDFs. Includes image preprocessing (denoising, thresholding) and a modular Flask backend for file uploads and processing pipelines.
       </p>
       <div class="project-tags">
         <span class="tag">Python</span>
-        <span class="tag">LangChain</span>
-        <span class="tag">ML</span>
-        <span class="tag blue">AI Agent</span>
+        <span class="tag">Flask</span>
+        <span class="tag blue">OCR</span>
+        <span class="tag blue">NLP</span>
       </div>
     </div>
 
     <div class="project-card reveal" style="animation-delay:0.1s">
-      <div class="project-num">02 / PRODUCTIVITY</div>
-      <h3 class="project-title">FlowMind AI</h3>
+      <div class="project-num">02 / SECURITY</div>
+      <h3 class="project-title">Online Voting System</h3>
       <p class="project-desc">
-        An AI-powered workflow automation tool that maps, streamlines, and optimizes task pipelines using natural language interfaces and smart scheduling logic.
+        Secure web-based voting platform with JWT authentication and role-based access control (RBAC). Features real-time vote counting, dynamic result visualization, and full protection against unauthorized access.
       </p>
       <div class="project-tags">
         <span class="tag">Python</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag blue">Automation</span>
-        <span class="tag blue">AI</span>
+        <span class="tag">Flask</span>
+        <span class="tag blue">SQL</span>
+        <span class="tag">HTML/CSS/JS</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="animation-delay:0.15s">
+      <div class="project-num">03 / AI AGENT</div>
+      <h3 class="project-title">AI Data Science Agent</h3>
+      <p class="project-desc">
+        Automated data analysis pipeline for cleaning, transforming, and processing structured datasets. Performs statistical analysis and feature extraction using Pandas and NumPy, generating structured reports for data-driven decisions.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag blue">NumPy</span>
       </div>
     </div>
 
     <div class="project-card reveal" style="animation-delay:0.2s">
-      <div class="project-num">03 / SCRAPING</div>
-      <h3 class="project-title">AI Web Scraper</h3>
+      <div class="project-num">04 / AUTOMATION</div>
+      <h3 class="project-title">Web Scraping & Data Pipeline</h3>
       <p class="project-desc">
-        An intelligent web scraping tool that uses AI to extract, structure, and summarize content from web pages — adapting to dynamic layouts without manual CSS selectors.
+        Web scraping system using BeautifulSoup and Requests to extract structured data from multiple sites. Automated collection and cleaning pipeline stores results in CSV/JSON formats for analysis and downstream ML workflows.
       </p>
       <div class="project-tags">
         <span class="tag">Python</span>
         <span class="tag">BeautifulSoup</span>
-        <span class="tag blue">LLM</span>
+        <span class="tag blue">Pandas</span>
         <span class="tag">Automation</span>
       </div>
     </div>
@@ -581,16 +570,47 @@
 
 <div class="section-divider"></div>
 
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label reveal">// 04 — Credentials</p>
+  <h2 class="section-title reveal">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <span class="cert-icon">🛡️</span>
+      <div>
+        <div class="cert-name">Introduction to Cybersecurity</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="animation-delay:0.1s">
+      <span class="cert-icon">☁️</span>
+      <div>
+        <div class="cert-name">Oracle Cloud Infrastructure 2025 AI Foundations Associate</div>
+        <div class="cert-issuer">Oracle</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="animation-delay:0.2s">
+      <span class="cert-icon">🤖</span>
+      <div>
+        <div class="cert-name">Generative AI – Gemini for Data Analysis & ML Workflow</div>
+        <div class="cert-issuer">Google Cloud</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label reveal">// 04 — Contact</p>
+  <p class="section-label reveal">// 05 — Contact</p>
   <h2 class="section-title reveal">Let's Connect</h2>
   <div class="contact-grid">
-    <a class="contact-item reveal" href="mailto:sagartripathi027@email.com">
+    <a class="contact-item reveal" href="mailto:sagartripathi027@gmail.com">
       <span class="contact-icon">✉️</span>
       <div>
         <div class="contact-label">Email</div>
-        <div class="contact-value">sagartripathi027@email.com</div>
+        <div class="contact-value">sagartripathi027@gmail.com</div>
       </div>
     </a>
     <a class="contact-item reveal" href="tel:+918305671043" style="animation-delay:0.1s">
@@ -618,11 +638,10 @@
 </section>
 
 <footer>
-  <p>Crafted by <span>Sagar Tripathi</span> — Data Science Student &amp; ML Engineer &copy; 2025</p>
+  <p>Crafted by <span>Sagar Tripathi</span> — AI & Data Science Student &copy; 2026</p>
 </footer>
 
 <script>
-  // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -642,7 +661,6 @@
     el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='36px'; ring.style.height='36px'; });
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
